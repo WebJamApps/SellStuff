@@ -1,0 +1,378 @@
+.sidebar {
+  background: linear-gradient((rgba($color-white-2, 1), rgba($color-white-2, 1), rgba($color-grey-light-1, .4), rgba($logo-yellow, .5)));
+  grid-column: sidebar-start / sidebar-end;
+  grid-row: 1 / -1;
+  border-right: 1px solid rgba($color-black, .5);
+  overflow-y: auto;
+  overflow-x: hidden;
+  width: 20vw;
+
+  @media only screen and (max-width: $bp-med) {
+    width: 100vw;
+  }
+
+  @include scrollbarOverride;
+
+  &__content {
+    height: 100vh;
+    display: grid;
+    grid-template-rows: repeat(2, min-content) 1fr;
+
+    @media only screen and (max-width: $bp-med) {
+      height: max-content;
+    }
+  }
+
+  @media only screen and (max-width: $bp-med) {
+    grid-column: 1 / -1;
+    grid-row: 1 / 2;
+    border-right: none;
+    grid-template-rows: auto;
+  }
+
+  h2 {
+  font-size: 2.2rem;
+  font-weight: $font-weight-light;
+  color: rgba($logo-green-dark, .8);
+
+  @media only screen and (min-width: $bp-4k) {
+    font-size: 4rem;
+  }
+
+  @media only screen and (max-width: $bp-med) {
+    font-size: $default-font-size; }
+  }
+
+  a {
+    font-size: 1.5rem;
+  }
+
+  .header {
+    display: grid;
+    margin-bottom: 2rem;
+
+    @media only screen and (max-width: $bp-med) {
+      grid-template-rows: 1fr 2rem;
+      grid-template-columns: 1fr;
+      margin-bottom: 0;
+    }
+
+    &__title {
+      @media only screen and (max-width: $bp-med) {
+        grid-row: 1 / 2;
+        grid-column: 1 / 1;
+        margin: auto 0;
+        padding-left: 3rem;
+      }
+
+      @media only screen and (max-width: $bp-sm) {
+        padding-left: 5rem;
+      }
+
+      h2 {
+        text-align: center;
+        font-size: 3rem;
+        margin-right: .5rem;
+
+        @media only screen and (min-width: $bp-4k) {
+          font-size: 5rem;
+        }
+
+        @media only screen and (max-width: $bp-med) {
+          font-size: 6rem;
+          margin-left: 10rem;
+        }
+
+        @media only screen and (max-width: $bp-sm) {
+          font-size: 4.25rem;
+          margin-left: 5rem;
+        }
+
+        @media only screen and (max-width: $bp-mobile-l) {
+          font-size: 3.25rem;
+        }
+
+        @media only screen and (max-width: $bp-mobile-m) {
+          font-size: 2.75rem;
+        }
+
+        @media only screen and (max-width: $bp-mobile-s) {
+          font-size: 2.3rem;
+        }
+
+        @media only screen and (max-width: $bp-tiny) {
+          font-size: 2rem;
+        }
+      }
+    }
+
+    &__logo {
+      display: grid;
+      justify-content: center;
+
+      @media only screen and (max-width: $bp-med) {
+        justify-content: inherit;
+        margin-bottom: -2rem;
+      }
+
+      &--logo-2 {
+        display: grid;
+        justify-content: center;
+        align-content: end;
+
+        @media only screen and (max-width: $bp-med) {
+          display: none;
+        }
+      }
+
+      &--picture, &--picture-2 {
+        max-width: 20vw;
+
+        @media only screen and (max-width: $bp-med) {
+          max-width: 20%;
+          margin-bottom: 0;
+          grid-row: 1 / 1;
+          grid-column: 1 / 1;
+        }
+      }
+
+      &--picture-2 {
+        margin: 0 auto;
+      }
+    }
+
+    &__mobile-menu {
+      display: none;
+
+      @media only screen and (max-width: $bp-med) {
+        display: initial;
+        grid-row: 1 / 1;
+        margin-top: 7rem;
+        margin-right: 6rem;
+        outline: none;
+
+        &--icon {
+            position: relative;
+
+            &,
+            &::before,
+            &::after {
+                width: 3rem;
+                height: 2px;
+                background-color: black;
+                display: inline-block;
+                transition: all .2s;
+            }
+
+            &::before,
+            &::after {
+                content: "";
+                position: absolute;
+                left: 0;
+            }
+
+            &::before { top: -.8rem; }
+            &::after { top: .8rem; }
+        }
+      }
+
+      @media only screen and (max-width: $bp-ipad) {
+        margin-top: 7rem;
+      }
+
+      @media only screen and (max-width: $bp-moto-g4) {
+        margin-top: 5.75rem;
+      }
+
+      @media only screen and (max-width: $bp-sm) {
+        margin-right: 4rem;
+        margin-top: 5rem;
+      }
+
+      @media only screen and (max-width: $bp-extra-sm) {
+        margin-top: 4.5rem;
+      }
+
+      @media only screen and (max-width: $bp-mobile-l) {
+        margin-top: 3.75rem;
+      }
+
+      @media only screen and (max-width: $bp-pixel-2) {
+        margin-top: 3.4rem;
+      }
+
+      @media only screen and (max-width: $bp-mobile-m) {
+        margin-top: 3.15rem;
+      }
+
+      @media only screen and (max-width: $bp-mobile-s) {
+        margin-top: 2.4rem;
+      }
+
+      @media only screen and (max-width: $bp-galaxy-fold) {
+        margin-top: 1.8rem;
+      }
+    }
+  }
+
+  .sidebar__functions {
+    margin-left: .5rem;
+    margin-right: 1.5rem;
+
+    .tos {
+      font-size: .8rem;
+    }
+
+    .search,
+    .subscribe {
+      display: grid;
+
+      &:first-child {
+        margin-bottom: 2.5rem;
+      }
+    }
+
+    .search__form,
+    .subscribe__form {
+      display: grid;
+      grid-row-gap: 1.5rem;
+      grid-template-rows: 1fr;
+
+      &--input {
+        height: 2.5rem;
+        font-size: 1.6rem;
+
+        @media only screen and (min-width: $bp-4k) {
+          height: 5.5rem;
+          font-size: 3.6rem;
+        }
+      }
+
+      &--btn {
+        width: 90% !important;
+        justify-self: end;
+
+        &::after {
+          content: "";
+          display: inline-block;
+          height: 100%;
+          width: 100%;
+          border-radius: 2rem;
+          position: absolute;
+          top: 0;
+          left: 0;
+          z-index: -1;
+          transition: all .4s;
+        }
+
+        &:hover {
+          transform: translateY(-.2rem);
+          box-shadow: $box-shadow-2;
+
+          &::after {
+            transform: scaleX(1) scaleY(1.2);
+            opacity: 0;
+          }
+        }
+
+        &:active {
+          transform: translateY(-.1rem);
+          box-shadow: $box-shadow-3;
+        }
+      }
+    }
+  }
+
+  .navigation {
+    display: grid;
+    justify-content: center;
+    align-content: end;
+  }
+}
+
+@media only screen and (max-width: $bp-med) {
+
+  div.close.sidebar__functions {
+    display: none;
+  }
+
+  div.open.sidebar__functions {
+    width: 80%;
+    margin: 0 auto;
+    display: block;
+    margin-top: 2rem;
+  }
+
+  span.open.header__mobile-menu > span.header__mobile-menu--icon {
+    background-color: transparent;
+
+    &:before {
+      top: 0;
+      transform: rotate(135deg);
+    }
+
+    &:after {
+      top: 0;
+      transform: rotate(-135deg);
+    }
+  }
+}
+
+.nav {
+  list-style: none;
+
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  grid-gap: 2rem;
+
+  margin-top: 2rem;
+
+  &__link {
+    & .fa, .fas {
+      font-size: 1.5rem;
+      margin-right: .4rem;
+
+      @media only screen and (min-width: $bp-4k) {
+        font-size: 4rem;
+      }
+    }
+  }
+
+  &__link:link,
+  &__link:visited {
+    font-size: 1.4rem;
+    color: $color-black;
+    text-decoration: none;
+    padding: 1.5rem;
+    display: block;
+    transition: all .2s;
+
+    @media only screen and (min-width: $bp-4k) {
+      font-size: 3.4rem;
+    }
+    @media only screen and (max-width: $bp-med) {
+      padding: 0 0 0 1.4rem;
+    }
+  }
+  &__link:hover,
+  &__link:active {
+    background-color: rgba($color-black, .05);
+    transform: translateY(-3px);
+  }
+}
+
+// Controls the sidebar menu on mobile
+
+div.open:nth-child(1) {
+  height: 100vh;
+}
+
+.menu-item {
+  min-height            : 4.4rem;
+  padding-top           : 2.5rem;
+  margin-bottom         : 1.5rem;
+
+  @media only screen and (max-width: $bp-med) {
+    padding-top: 1rem;
+  }
+}

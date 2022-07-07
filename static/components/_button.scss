@@ -1,0 +1,54 @@
+.btn {
+  @include buttonDefault;
+}
+
+button[id*="deleteBlogButton"],
+button[id*="editBlogButton"],
+button[id*="addBlogButton"] {
+  @include buttonDefault;
+}
+
+button[id*="addBlogButton"] {
+  width: 5rem;
+
+  @media only screen and (min-width: $bp-4k) {
+    width: 6rem !important;
+  }
+}
+
+.googleLoginButton, .googleLogoutButton {
+  @media only screen and (min-width: $bp-4k) {
+    font-size: 4rem !important;
+  }
+}
+
+#c-h {
+  width: 10%;
+  
+  @media only screen and (max-width: $bp-med) {
+    width: 15%;
+  }
+
+  @media only screen and (max-width: $bp-mobile-l) {
+    width: 20%;
+  }
+
+  @media only screen and (max-width: $bp-mobile-s) {
+    height: auto;
+    width: 15%;
+  }
+
+}
+
+#update-blog-button, #cancel-blog-update-button {
+  width: 15%;
+
+  @media only screen and (max-width: $bp-med) {
+    width: 20%;
+  }
+
+  @media only screen and (max-width: $bp-mobile-m) {
+    width: 30%;
+    height: 3rem;
+  }
+}

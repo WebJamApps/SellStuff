@@ -1,0 +1,57 @@
+// Logo Colours
+$logo-blue: rgb(90, 155, 213);
+$logo-green: rgb(190, 221, 128);
+$logo-red: rgb(255, 124, 129);
+$logo-yellow: rgb(254, 255, 153);
+
+
+// Colour Pallete
+
+$logo-green-dark: rgb(31, 81, 21);
+$logo-blue-dark: rgb(46, 117, 181);
+
+$sand-3: rgb(211, 214, 203);
+$sand-6: rgb(255, 212, 193);
+
+$color-black:rgb(31, 17, 44);
+$color-white: rgb(255, 255, 255);
+
+$color-white-2: rgb(246, 240, 240);
+
+$color-grey-light-1: rgb(204, 204, 204);
+
+// FONT
+$default-font-size: 1.6rem;
+$default-font-family: 'PT Serif', serif; // Body
+$alt-font-family: 'Source Sans Pro', sans-serif; // H2, Links
+
+// FONT WEIGHTS
+$font-weight-normal: 400;
+$font-weight-extra-light: 300;
+$font-weight-light: 600;
+$font-weight-med: 700; // Equivalent to bold
+$font-weight-heavy: 900;
+
+// RESPONSIVE BREAKPOINTS
+$bp-4k: 160em;           //  2560px
+$bp-ipad-pro: 85.375em;  //  1366px
+$bp-largest: 75em;       //  1200px
+$bp-ipad-land: 64em;     //  1024px - iPad landscape
+$bp-large: 62.5em;       //  1000px
+$bp-med: 53.125em;       //  850px
+$bp-ipad: 48em;          //  768px
+$bp-header-fix: 43.75em; //  700px
+$bp-moto-g4: 40em;       //  640px - Moto g4 landscape
+$bp-sm: 37.5em;          //  600px
+$bp-extra-some: 33.1em;  //  530px
+$bp-extra-sm: 30em;      //  480px
+$bp-mobile-l: 26.6em;    //  425px
+$bp-pixel-2: 25.6875em;  //  411px - Pixel 2
+$bp-mobile-m: 23.5em;    //  376px
+$bp-mobile-s: 20em;      //  320px
+$bp-tiny: 18.75em;       //  300px
+$bp-galaxy-fold: 17.5em; //  Galaxy Fold
+
+// BOX SHADOW
+$box-shadow-2: 0 1rem 1.2rem  rgba($logo-red, .4);
+$box-shadow-3:  0 .5rem 1rem rgba($logo-red, .4);

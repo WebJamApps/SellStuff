@@ -1,0 +1,49 @@
+// If we're going to use tables in this, these styles should work fairly well.
+// If not, this and _tables.scss can be deleted.
+
+.newsTable {
+    width: 320px;
+    margin-bottom: 1rem;
+    color: #212529;
+    table-layout: fixed;
+}
+
+.newsTable td {
+  width: 50% ;
+}
+
+.newsTable td, .newsTable th {
+  vertical-align: top;
+}
+
+.newsUrl tbody tr:nth-child(odd) {
+  display: table-row;
+  background-color: #d8ecf3;
+}
+
+.newsUrl tbody tr:nth-child(even) {
+  display: table-row;
+  background-color: #fff;
+}
+
+@media screen and (max-width: 320px) {
+  .newsTable {
+    width: 320px !important;
+  }
+}
+
+@media screen and (max-width: 911px) {
+  .TableContainer-root {
+    height: 220px !important;
+  }
+}
+
+@media screen and (min-width: 912px) {
+  .TableContainer-root {
+    width: 100%;
+  }
+
+  .newsTitle {
+    width: 320px !important;
+  }
+}
