@@ -1,6 +1,6 @@
 import superagent from 'superagent';
 import { Dispatch } from 'react';
-import { AppProps, GoogleBody } from './AppTypes';
+import { GoogleBody } from '../AppTypes';
 
 export const gotToken = (doc: string): unknown => ({
   type: 'GOT_TOKEN',
@@ -14,23 +14,21 @@ export const authError = (e: Error): unknown => ({
 
 export const logout = (dispatch: Dispatch<unknown>): void => dispatch({ type: 'LOGOUT' });
 
-async function authFunc(body: GoogleBody, props: AppProps): Promise<string | Error> {
-  const { auth } = props;
+export async function authenticate(body: GoogleBody, auth:any, dispatch:(arg0:any)=>void): Promise<string | Error> {
   if (auth.isAuthenticated) return 'authenticated';
   let data;
   try {
     data = await superagent.post(`${process.env.BackendUrl}/user/auth/google`)
       .set({ Accept: 'application/json' }).send(body);
   } catch (e: any) {
-    props.dispatch(authError(e));
+    dispatch(authError(e));
     return Promise.reject(e);
   }
   if (!data.body) {
-    props.dispatch(authError(new Error('authentication failed')));
+    dispatch(authError(new Error('authentication failed')));
     return 'authentication failed';
   }
-  props.dispatch(gotToken(data.body));
+  dispatch(gotToken(data.body));
   return 'authenticated';
 }
 
-export default authFunc;

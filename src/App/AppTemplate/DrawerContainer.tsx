@@ -1,4 +1,6 @@
 import React from 'react';
+import menuItems from './menuDefinition';
+import { MenuItem } from './MenuItem';
 
 function toggleMobileMenu(state:any, setState: (arg0:any)=>void) {
   const { menuOpen, containerOpen } = state;
@@ -13,33 +15,34 @@ function handleKeyMenu(evt: { key: string; }, state:any, setState: (arg0:any)=>v
 }
 
 interface InavLinksProps {
-  style:string
+  style:string, auth:any, setState:(arg0:any)=>void, dispatch:(arg0:any)=>void
 }
-export const NavLinks = ({ style }: InavLinksProps) => {
+export const NavLinks = ({ style, auth, setState, dispatch }: InavLinksProps) => {
   return (
       <div className={`navigation ${style}`}>
-        {this.menus.map((menu, index) => (this.menuUtils.menuItem(menu, index, this)))}
+        {/* {menuItems.map((menu, index) => (this.menuUtils.menuItem(menu, index, this)))} */}
+        {menuItems.map((menuItem, index) => <MenuItem dispatch={dispatch} menuItem={menuItem} index={index} auth={auth} setState={setState}/>)}
       </div>
   );
 };
 
-interface IsidebarProps {
-  style:string
-}
-export const Sidebar = ({ style }: IsidebarProps) => {
-  return (
-      <div className={`${style} sidebar__functions`}>
-        {// TODO remove process.env check when feature is working
-        /* istanbul ignore next */process.env.NODE_ENV !== 'production'
-      ? this.makeForm('Search') : null
-        }
-        {// TODO remove process.env check when feature is working
-        /* istanbul ignore next */process.env.NODE_ENV !== 'production'
-      ? this.makeForm('Subscribe') : null
-        }
-      </div>
-  );
-};
+// interface IsidebarProps {
+//   style:string
+// }
+// export const Sidebar = ({ style }: IsidebarProps) => {
+//   return (
+//       <div className={`${style} sidebar__functions`}>
+//         {// TODO remove process.env check when feature is working
+//         /* istanbul ignore next */process.env.NODE_ENV !== 'production'
+//       ? this.makeForm('Search') : null
+//         }
+//         {// TODO remove process.env check when feature is working
+//         /* istanbul ignore next */process.env.NODE_ENV !== 'production'
+//       ? this.makeForm('Subscribe') : null
+//         }
+//       </div>
+//   );
+// };
 
 interface IdrawerHeaderProps {
   style:string, state:any, setState: (arg0:any)=>void
@@ -71,19 +74,19 @@ export const DrawerHeader = ({ style, state, setState }: IdrawerHeaderProps) => 
 };
 
 interface IdrawerContainerProps {
-  menuOpen:boolean, state:any, setState: (arg0:any)=>void
+  menuOpen:boolean, state:any, setState: (arg0:any)=>void, auth:any, dispatch:(arg0:any)=>void
 }
 export const DrawerContainer = (props:IdrawerContainerProps) => {
-  const { menuOpen, state, setState } = props;
+  const { menuOpen, state, setState, auth, dispatch } = props;
   const style = `${menuOpen ? 'open' : 'close'}`;
   return (
           <div className={`${style} sidebar`}>
             <div className="sidebar__content">
                 <DrawerHeader style={style} state={state} setState={setState}/>
               {/* {this.drawerHeader(style)} */}
-              <Sidebar style={style}/>
+              {/* <Sidebar style={style}/> */}
               {/* {this.sidebar(style)} */}
-              <NavLinks style={style}/>
+              <NavLinks style={style} auth={auth} setState={setState} dispatch={dispatch}/>
               {/* {this.navLinks(style)} */}
             </div>
           </div>

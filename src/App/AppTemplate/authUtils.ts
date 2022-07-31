@@ -2,10 +2,10 @@ import superagent from 'superagent';
 import jwt from 'jsonwebtoken';
 import { Dispatch } from 'react';
 import { GoogleLoginResponseOffline, GoogleLoginResponse } from 'react-google-login';
-import commonUtils from '../lib/commonUtils';
-import authenticate, { logout } from './authActions';
-import { GoogleBody } from './AppTypes';
-import type { AppTemplate } from './AppTemplate';
+import commonUtils from '../../lib/commonUtils';
+import { authenticate, logout } from './authActions';
+import { GoogleBody } from '../AppTypes';
+import type { AppTemplate } from '.';
 
 export interface AuthUtils {
   setUser: (view: AppTemplate) => Promise<string>,
@@ -13,8 +13,7 @@ export interface AuthUtils {
   responseGoogleFailLogin: (response: unknown) => string,
   responseGoogleLogout: (dispatch: Dispatch<unknown>) => string,
 }
-async function setUser(view: AppTemplate): Promise<string> {
-  const { auth, dispatch } = view.props;
+async function setUser(auth:any, dispatch:(arg0:any)=>void): Promise<string> {
   const userRoles = commonUtils.getUserRoles();
   let decoded:any, user: superagent.Response, message = 'user set';
   try {
@@ -34,7 +33,10 @@ async function setUser(view: AppTemplate): Promise<string> {
   window.location.reload();
   return message;
 }
-async function responseGoogleLogin(response: GoogleLoginResponseOffline | GoogleLoginResponse, view: AppTemplate): Promise<string> {
+async function responseGoogleLogin(
+  response: GoogleLoginResponseOffline | GoogleLoginResponse,
+  auth:any, dispatch:(arg0:any)=>void,
+): Promise<string> {
   const uri = window.location.href;
   const baseUri = uri.split('/')[2];
   const body: GoogleBody = {
@@ -46,10 +48,10 @@ async function responseGoogleLogin(response: GoogleLoginResponseOffline | Google
       return encodeURIComponent(rand);
     },
   };
-  try { await authenticate(body, view.props); } catch (e: any) {
+  try { await authenticate(body, auth, dispatch); } catch (e: any) {
     return `${e.message}`;
   }
-  return setUser(view);
+  return setUser(auth, dispatch);
 }
 
 function responseGoogleFailLogin(response: unknown): string {

@@ -1,14 +1,14 @@
 import React, { Dispatch } from 'react';
-import { Link, withRouter, RouteComponentProps } from 'react-router-dom';
-import {
-  GoogleLogin, GoogleLogout, GoogleLoginResponseOffline, GoogleLoginResponse,
-} from 'react-google-login';
+import { withRouter, RouteComponentProps } from 'react-router-dom';
+// import {
+//   GoogleLogin, GoogleLogout, GoogleLoginResponseOffline, GoogleLoginResponse,
+// } from 'react-google-login';
 import { connect } from 'react-redux';
-import authUtils from '../authUtils';
+// import authUtils from './authUtils';
 import mapStoreToProps, { Auth } from '../../redux/mapStoreToProps';
-import menuUtils from '../menuUtils';
-import menuItems, { MenuItem } from '../menuItems';
-import { Tooltip } from '@mui/material';
+// import menuUtils from './MenuItem';
+// import menuItems, { MenuItem } from './menuDefinition';
+// import { Tooltip } from '@mui/material';
 import { DrawerContainer } from './DrawerContainer';
 
 interface AppMainProps extends RouteComponentProps {
@@ -26,26 +26,26 @@ export class AppTemplate extends React.Component<AppMainProps, AppMainState> {
     },
   };
 
-  menuUtils: typeof menuUtils;
+  //menuUtils: typeof menuUtils;
 
-  authUtils: typeof authUtils;
+  // authUtils: typeof authUtils;
 
-  menus: MenuItem[];
+  //menus: MenuItem[];
 
   constructor(props: AppMainProps) {
     super(props);
-    this.menus = menuItems;
-    this.menuUtils = menuUtils;
+    // this.menus = menuItems;
+    // this.menuUtils = menuUtils;
     this.state = { menuOpen: false, containerOpen: true };
-    this.close = this.close.bind(this);
-    this.handleKeyPress = this.handleKeyPress.bind(this);
-    this.handleKeyMenu = this.handleKeyMenu.bind(this);
-    this.toggleMobileMenu = this.toggleMobileMenu.bind(this);
-    this.navLinks = this.navLinks.bind(this);
-    this.responseGoogleLogin = this.responseGoogleLogin.bind(this);
-    this.responseGoogleLogout = this.responseGoogleLogout.bind(this);
-    this.googleButtons = this.googleButtons.bind(this);
-    this.authUtils = authUtils;
+    // this.close = this.close.bind(this);
+    // this.handleKeyPress = this.handleKeyPress.bind(this);
+    // this.handleKeyMenu = this.handleKeyMenu.bind(this);
+    // this.toggleMobileMenu = this.toggleMobileMenu.bind(this);
+    // this.navLinks = this.navLinks.bind(this);
+    // this.responseGoogleLogin = this.responseGoogleLogin.bind(this);
+    // this.responseGoogleLogout = this.responseGoogleLogout.bind(this);
+    //this.googleButtons = this.googleButtons.bind(this);
+    // this.authUtils = authUtils;
   }
 
   // handleKeyMenu(e: { key: string; }): (void | null) {
@@ -53,21 +53,21 @@ export class AppTemplate extends React.Component<AppMainProps, AppMainState> {
   //   return null;
   // }
 
-  handleKeyPress(e: { key: string; }): (void | null) {
-    if (e.key === 'Escape') return this.setState({ menuOpen: false, containerOpen: true });
-    return null;
-  }
+  // handleKeyPress(e: { key: string; }): (void | null) {
+  //   if (e.key === 'Escape') return this.setState({ menuOpen: false, containerOpen: true });
+  //   return null;
+  // }
 
-  close(): boolean {
-    this.setState({ menuOpen: false, containerOpen: true });
-    return true;
-  }
+  // close(): boolean {
+  //   this.setState({ menuOpen: false, containerOpen: true });
+  //   return true;
+  // }
 
-  responseGoogleLogin(response: GoogleLoginResponseOffline | GoogleLoginResponse): Promise<string> {
-    return this.authUtils.responseGoogleLogin(response, this);
-  }
+  // responseGoogleLogin(response: GoogleLoginResponseOffline | GoogleLoginResponse): Promise<string> {
+  //   return this.authUtils.responseGoogleLogin(response, this);
+  // }
 
-  responseGoogleLogout(): string { const { dispatch } = this.props; return this.authUtils.responseGoogleLogout(dispatch); }
+  // responseGoogleLogout(): string { const { dispatch } = this.props; return this.authUtils.responseGoogleLogout(dispatch); }
 
   // toggleMobileMenu(): void {
   //   const { menuOpen, containerOpen } = this.state;
@@ -76,48 +76,48 @@ export class AppTemplate extends React.Component<AppMainProps, AppMainState> {
   //   this.setState({ menuOpen: mO, containerOpen: cO });
   // }
 
-  googleButtons(type: string, index: string | number | undefined): JSX.Element {
-    const cId = process.env.GoogleClientId || /* istanbul ignore next */'';
-    if (type === 'login') {
-      return (
-        <Tooltip key={index} title={'Login with your Google account'} >
-        <div key={index} className="menu-item googleLogin">
-          <GoogleLogin
-            responseType="code"
-            clientId={cId}
-            icon={false}
-            className="googleLoginButton"
-            buttonText="Login"
-            accessType="offline"
-            onSuccess={this.responseGoogleLogin}
-            onFailure={this.authUtils.responseGoogleFailLogin}
-            cookiePolicy="single_host_origin"
-          >
-            <i className="fab fa-google"> Login</i>
-          </GoogleLogin>
-        </div>
-        </Tooltip>
-      );
-    } return (
-      <div key={index} className="menu-item googleLogout">
-        <GoogleLogout className="googleLogoutButton" clientId={cId} icon={false} buttonText="Logout" onLogoutSuccess={this.responseGoogleLogout}>
-          <i className="fab fa-google"> Logout</i>
-        </GoogleLogout>
-      </div>
-    );
-  }
+  // googleButtons(type: string, index: string | number | undefined): JSX.Element {
+  //   const cId = process.env.GoogleClientId || /* istanbul ignore next */'';
+  //   if (type === 'login') {
+  //     return (
+  //       <Tooltip key={index} title={'Login with your Google account'} >
+  //       <div key={index} className="menu-item googleLogin">
+  //         <GoogleLogin
+  //           responseType="code"
+  //           clientId={cId}
+  //           icon={false}
+  //           className="googleLoginButton"
+  //           buttonText="Login"
+  //           accessType="offline"
+  //           onSuccess={this.responseGoogleLogin}
+  //           onFailure={this.authUtils.responseGoogleFailLogin}
+  //           cookiePolicy="single_host_origin"
+  //         >
+  //           <i className="fab fa-google"> Login</i>
+  //         </GoogleLogin>
+  //       </div>
+  //       </Tooltip>
+  //     );
+  //   } return (
+  //     <div key={index} className="menu-item googleLogout">
+  //       <GoogleLogout className="googleLogoutButton" clientId={cId} icon={false} buttonText="Logout" onLogoutSuccess={this.responseGoogleLogout}>
+  //         <i className="fab fa-google"> Logout</i>
+  //       </GoogleLogout>
+  //     </div>
+  //   );
+  // }
 
-  makeMenuLink(menu: MenuItem, index: number): JSX.Element {
-    return (
-      <div key={index} className="nav">
-        <Link to={menu.link} className="nav__link" onClick={this.close}>
-          <i className={`${menu.iconClass}`} />
-          &nbsp;
-          <span className="nav-item">{menu.name}</span>
-        </Link>
-      </div>
-    );
-  }
+  // makeMenuLink(menu: MenuItem, index: number): JSX.Element {
+  //   return (
+  //     <div key={index} className="nav">
+  //       <Link to={menu.link} className="nav__link" onClick={this.close}>
+  //         <i className={`${menu.iconClass}`} />
+  //         &nbsp;
+  //         <span className="nav-item">{menu.name}</span>
+  //       </Link>
+  //     </div>
+  //   );
+  // }
 
   // navLinks(className: string): JSX.Element {
   //   return (
@@ -128,31 +128,31 @@ export class AppTemplate extends React.Component<AppMainProps, AppMainState> {
   // }
 
   // eslint-disable-next-line class-methods-use-this
-  makeForm(h2Text: string): JSX.Element {
-    const cN = h2Text.toLowerCase();
-    const h2cN = `${cN}__heading heading-2`;
-    const fcN = `${cN}__form`;
-    const icN = `${cN}__form--input`;
-    const iB = `btn ${cN}__form--btn`;
-    const pH = `${h2Text}...`;
-    let toolT = cN;
-    if (toolT == 'search') {
-      toolT = 'Search for Blog';
-    } else {
-      toolT = 'Subscribe to Blog';
-    }
-    return (
-      <Tooltip title={toolT}>
-      <div className={cN}>
-        <h2 className={h2cN}>{h2Text}</h2>
-        <form className={fcN} action="get">
-          <input className={icN} type="text" role="searchbox" defaultValue="" placeholder={pH} />
-          <input className={iB} type="submit" value={h2Text} />
-        </form>
-      </div>
-      </Tooltip>
-    );
-  }
+  // makeForm(h2Text: string): JSX.Element {
+  //   const cN = h2Text.toLowerCase();
+  //   const h2cN = `${cN}__heading heading-2`;
+  //   const fcN = `${cN}__form`;
+  //   const icN = `${cN}__form--input`;
+  //   const iB = `btn ${cN}__form--btn`;
+  //   const pH = `${h2Text}...`;
+  //   let toolT = cN;
+  //   if (toolT == 'search') {
+  //     toolT = 'Search for Blog';
+  //   } else {
+  //     toolT = 'Subscribe to Blog';
+  //   }
+  //   return (
+  //     <Tooltip title={toolT}>
+  //     <div className={cN}>
+  //       <h2 className={h2cN}>{h2Text}</h2>
+  //       <form className={fcN} action="get">
+  //         <input className={icN} type="text" role="searchbox" defaultValue="" placeholder={pH} />
+  //         <input className={iB} type="submit" value={h2Text} />
+  //       </form>
+  //     </div>
+  //     </Tooltip>
+  //   );
+  // }
 
   // // eslint-disable-next-line class-methods-use-this
   // sidebar(className: string): JSX.Element {
@@ -210,13 +210,16 @@ export class AppTemplate extends React.Component<AppMainProps, AppMainState> {
   // }
 
   render(): JSX.Element {
-    const { menuOpen, containerOpen } = this.state; const style = `${menuOpen ? 'open' : 'close'}`;
+    const { menuOpen, containerOpen } = this.state; 
+    // const style = `${menuOpen ? 'open' : 'close'}`;
     const style2 = `${containerOpen ? 'open' : 'close'}`;
     const { children } = this.props;
     return (
       <div className={`${style2} container`}>
         {/* {this.drawerContainer(style)} */}
-        <DrawerContainer menuOpen={menuOpen} state={this.state} setState={this.setState}/>
+        <DrawerContainer 
+          auth={this.props.auth} menuOpen={menuOpen} state={this.state} setState={this.setState} dispatch={this.props.dispatch}
+        />
         {children}
       </div>
     );
