@@ -4,11 +4,12 @@ import {
   GoogleLogin, GoogleLogout, GoogleLoginResponseOffline, GoogleLoginResponse,
 } from 'react-google-login';
 import { connect } from 'react-redux';
-import authUtils from './authUtils';
-import mapStoreToProps, { Auth } from '../redux/mapStoreToProps';
-import menuUtils from './menuUtils';
-import menuItems, { MenuItem } from './menuItems';
+import authUtils from '../authUtils';
+import mapStoreToProps, { Auth } from '../../redux/mapStoreToProps';
+import menuUtils from '../menuUtils';
+import menuItems, { MenuItem } from '../menuItems';
 import { Tooltip } from '@mui/material';
+import { DrawerContainer } from './DrawerContainer';
 
 interface AppMainProps extends RouteComponentProps {
   children: React.ReactNode;
@@ -47,10 +48,10 @@ export class AppTemplate extends React.Component<AppMainProps, AppMainState> {
     this.authUtils = authUtils;
   }
 
-  handleKeyMenu(e: { key: string; }): (void | null) {
-    if (e.key === 'Enter') return this.toggleMobileMenu();
-    return null;
-  }
+  // handleKeyMenu(e: { key: string; }): (void | null) {
+  //   if (e.key === 'Enter') return this.toggleMobileMenu();
+  //   return null;
+  // }
 
   handleKeyPress(e: { key: string; }): (void | null) {
     if (e.key === 'Escape') return this.setState({ menuOpen: false, containerOpen: true });
@@ -68,12 +69,12 @@ export class AppTemplate extends React.Component<AppMainProps, AppMainState> {
 
   responseGoogleLogout(): string { const { dispatch } = this.props; return this.authUtils.responseGoogleLogout(dispatch); }
 
-  toggleMobileMenu(): void {
-    const { menuOpen, containerOpen } = this.state;
-    const mO = !menuOpen;
-    const cO = !containerOpen;
-    this.setState({ menuOpen: mO, containerOpen: cO });
-  }
+  // toggleMobileMenu(): void {
+  //   const { menuOpen, containerOpen } = this.state;
+  //   const mO = !menuOpen;
+  //   const cO = !containerOpen;
+  //   this.setState({ menuOpen: mO, containerOpen: cO });
+  // }
 
   googleButtons(type: string, index: string | number | undefined): JSX.Element {
     const cId = process.env.GoogleClientId || /* istanbul ignore next */'';
@@ -118,13 +119,13 @@ export class AppTemplate extends React.Component<AppMainProps, AppMainState> {
     );
   }
 
-  navLinks(className: string): JSX.Element {
-    return (
-      <div className={`navigation ${className}`}>
-        {this.menus.map((menu, index) => (this.menuUtils.menuItem(menu, index, this)))}
-      </div>
-    );
-  }
+  // navLinks(className: string): JSX.Element {
+  //   return (
+  //     <div className={`navigation ${className}`}>
+  //       {this.menus.map((menu, index) => (this.menuUtils.menuItem(menu, index, this)))}
+  //     </div>
+  //   );
+  // }
 
   // eslint-disable-next-line class-methods-use-this
   makeForm(h2Text: string): JSX.Element {
@@ -153,60 +154,60 @@ export class AppTemplate extends React.Component<AppMainProps, AppMainState> {
     );
   }
 
-  // eslint-disable-next-line class-methods-use-this
-  sidebar(className: string): JSX.Element {
-    return (
-      <div className={`${className} sidebar__functions`}>
-        {// TODO remove process.env check when feature is working
-        /* istanbul ignore next */process.env.NODE_ENV !== 'production'
-        ? this.makeForm('Search') : null
-        }
-        {// TODO remove process.env check when feature is working
-        /* istanbul ignore next */process.env.NODE_ENV !== 'production'
-        ? this.makeForm('Subscribe') : null
-        }
-      </div>
-    );
-  }
+  // // eslint-disable-next-line class-methods-use-this
+  // sidebar(className: string): JSX.Element {
+  //   return (
+  //     <div className={`${className} sidebar__functions`}>
+  //       {// TODO remove process.env check when feature is working
+  //       /* istanbul ignore next */process.env.NODE_ENV !== 'production'
+  //       ? this.makeForm('Search') : null
+  //       }
+  //       {// TODO remove process.env check when feature is working
+  //       /* istanbul ignore next */process.env.NODE_ENV !== 'production'
+  //       ? this.makeForm('Subscribe') : null
+  //       }
+  //     </div>
+  //   );
+  // }
 
-  drawerHeader(className: string): JSX.Element {
-    return (
-      <header className="header">
-        <div className="header__logo">
-          <img
-            className="header__logo--picture"
-            src="https://dl.dropbox.com/s/befh330hypey44l/fish%20with%20color.png?dl=0"
-            alt="The Jesus Fish with a multi-coloured background"
-          />
-          <span
-            className={`${className} header__mobile-menu`}
-            onClick={this.toggleMobileMenu}
-            onKeyPress={this.handleKeyMenu}
-            tabIndex={0}
-            role="button"
-          >
-            <span className="header__mobile-menu--icon" />
-          </span>
-          <span className="header__title">
-            <h2>Change In Christ</h2>
-          </span>
-        </div>
-      </header>
-    );
-  }
+  // drawerHeader(className: string): JSX.Element {
+  //   return (
+  //     <header className="header">
+  //       <div className="header__logo">
+  //         <img
+  //           className="header__logo--picture"
+  //           src="https://dl.dropbox.com/s/befh330hypey44l/fish%20with%20color.png?dl=0"
+  //           alt="The Jesus Fish with a multi-coloured background"
+  //         />
+  //         <span
+  //           className={`${className} header__mobile-menu`}
+  //           onClick={this.toggleMobileMenu}
+  //           onKeyPress={this.handleKeyMenu}
+  //           tabIndex={0}
+  //           role="button"
+  //         >
+  //           <span className="header__mobile-menu--icon" />
+  //         </span>
+  //         <span className="header__title">
+  //           <h2>Change In Christ</h2>
+  //         </span>
+  //       </div>
+  //     </header>
+  //   );
+  // }
 
-  drawerContainer(className: string): JSX.Element {
-    const { menuOpen } = this.state; const style = `${menuOpen ? 'open' : 'close'}`;
-    return (
-      <div className={`${className} sidebar`}>
-        <div className="sidebar__content">
-          {this.drawerHeader(style)}
-          {this.sidebar(style)}
-          {this.navLinks(style)}
-        </div>
-      </div>
-    );
-  }
+  // drawerContainer(className: string): JSX.Element {
+  //   const { menuOpen } = this.state; const style = `${menuOpen ? 'open' : 'close'}`;
+  //   return (
+  //     <div className={`${className} sidebar`}>
+  //       <div className="sidebar__content">
+  //         {this.drawerHeader(style)}
+  //         {this.sidebar(style)}
+  //         {this.navLinks(style)}
+  //       </div>
+  //     </div>
+  //   );
+  // }
 
   render(): JSX.Element {
     const { menuOpen, containerOpen } = this.state; const style = `${menuOpen ? 'open' : 'close'}`;
@@ -214,7 +215,8 @@ export class AppTemplate extends React.Component<AppMainProps, AppMainState> {
     const { children } = this.props;
     return (
       <div className={`${style2} container`}>
-        {this.drawerContainer(style)}
+        {/* {this.drawerContainer(style)} */}
+        <DrawerContainer menuOpen={menuOpen} state={this.state} setState={this.setState}/>
         {children}
       </div>
     );
