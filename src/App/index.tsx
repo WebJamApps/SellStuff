@@ -10,6 +10,7 @@ import DefaultHomepage from '../containers/Homepage';
 import mapStoreToProps from '../redux/mapStoreToProps';
 import fetch from '../lib/fetch';
 import { AppProps } from './AppTypes';
+import { GoogleOAuthProvider } from '@react-oauth/google';
 
 export class App extends Component<AppProps> {
   fetch: typeof fetch;
@@ -45,15 +46,17 @@ export class App extends Component<AppProps> {
       <React.StrictMode>
         <div id="App" className="App">
           <Router>
-            <AppTemplateDefault>
-              <Switch>
-                <Route exact path="/" component={DefaultHomepage} />
-                {auth.isAuthenticated && auth.user.userType && userRoles.indexOf(auth.user.userType) !== -1
-                  ? <Route path="/admin" component={AdminDashboardDefault} /> : null}
-                <Route path="/_id" component={DefaultHomepage} />
-                <Route component={AppFourOhFour} />
-              </Switch>
-            </AppTemplateDefault>
+            <GoogleOAuthProvider clientId={process.env.GoogleClientId || ''}>
+              <AppTemplateDefault>
+                <Switch>
+                  <Route exact path="/" component={DefaultHomepage} />
+                  {auth.isAuthenticated && auth.user.userType && userRoles.indexOf(auth.user.userType) !== -1
+                    ? <Route path="/admin" component={AdminDashboardDefault} /> : null}
+                  <Route path="/_id" component={DefaultHomepage} />
+                  <Route component={AppFourOhFour} />
+                </Switch>
+              </AppTemplateDefault>
+            </GoogleOAuthProvider>
           </Router>
         </div>
       </React.StrictMode>
