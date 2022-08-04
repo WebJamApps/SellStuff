@@ -13,14 +13,12 @@ interface IgoogleButtonsProps {
   auth: any, dispatch: (arg0: any) => void,
 }
 
-const login = useGoogleLogin({
-  onSuccess: codeResponse => authUtils.responseGoogleLogin(codeResponse, appTemplateProps),
-  flow: 'auth-code',
-});
-
 function GoogleButtons(props: IgoogleButtonsProps): JSX.Element {
   const { type, index, auth, dispatch } = props;
-  const cId = process.env.GoogleClientId || /* istanbul ignore next */'';
+  const login = useGoogleLogin({
+    onSuccess: (codeResponse: any) => authUtils.responseGoogleLogin(codeResponse, auth, dispatch),
+    flow: 'auth-code',
+  });
   if (type === 'login') {
     return (
       <Tooltip key={index} title={'Login with your Google account'} >

@@ -84,7 +84,6 @@
     "prop-types": "latest",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "react-google-login": "latest",
     "react-moment": "^1.1.1",
     "react-redux": "latest",
     "react-router-dom": "^5.2.1",

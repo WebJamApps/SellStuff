@@ -1,22 +1,23 @@
 import superagent from 'superagent';
 import jwt from 'jsonwebtoken';
 import { Dispatch } from 'react';
-import { GoogleLoginResponseOffline, GoogleLoginResponse } from 'react-google-login';
-import { CodeResponse, useGoogleLogin, googleLogout } from '@react-oauth/google';
+import { googleLogout } from '@react-oauth/google';
 import commonUtils from '../../lib/commonUtils';
-import { authenticate, logout } from './authActions';
+import { authenticate } from './authActions';
 import { GoogleBody } from '../AppTypes';
-import type { AppTemplate } from '.';
+import utils from '../../lib/commonUtils';
 
-export interface AuthUtils {
-  setUser: (view: AppTemplate) => Promise<string>,
-  responseGoogleLogin: (response: GoogleLoginResponseOffline | GoogleLoginResponse, view: AppTemplate) => Promise<string>,
-  responseGoogleFailLogin: (response: unknown) => string,
-  responseGoogleLogout: (dispatch: Dispatch<unknown>) => string,
+async function responseGoogleLogout(dispatch: Dispatch<unknown>): Promise<string> {
+  dispatch({ type: 'LOGOUT' });
+  googleLogout();
+  await utils.delay(2);
+  window.location.assign('/'); 
+  return 'logout';
 }
+
 async function setUser(auth:any, dispatch:(arg0:any)=>void): Promise<string> {
   const userRoles = commonUtils.getUserRoles();
-  let decoded:any, user: superagent.Response, message = 'user set';
+  let decoded:any, user: superagent.Response;
   try {
     decoded = jwt.verify(auth.token, process.env.HashString || /* istanbul ignore next */'');
   } catch (e: any) { return `${e.message}`; }
@@ -27,15 +28,15 @@ async function setUser(auth:any, dispatch:(arg0:any)=>void): Promise<string> {
       user = await superagent.get(`${process.env.BackendUrl}/user/${decoded.sub}`)
         .set('Accept', 'application/json').set('Authorization', `Bearer ${auth.token}`);
       if (userRoles.indexOf(user.body.userType) === -1) {
-        logout(dispatch); message = 'invalid userType';
+        return await responseGoogleLogout(dispatch);
       } else dispatch({ type: 'SET_USER', data: user.body });
     } catch (e: any) { return `${e.message}`; }
   }
   window.location.reload();
-  return message;
+  return 'user set';
 }
 async function responseGoogleLogin(
-  response: GoogleLoginResponseOffline | GoogleLoginResponse,
+  response: any,
   auth:any, dispatch:(arg0:any)=>void,
 ): Promise<string> {
   const uri = window.location.href;
@@ -57,15 +58,6 @@ async function responseGoogleLogin(
 
 function responseGoogleFailLogin(response: unknown): string {
   return `${response}`;
-}
-
-function responseGoogleLogout(dispatch: Dispatch<unknown>): string {
-  logout(dispatch);
-  if (window.location.href.includes('/admin')) {
-    window.location.assign('/staff');
-    return 'assign';
-  }
-  window.location.reload(); return 'reload';
 }
 
 export default {
