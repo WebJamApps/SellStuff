@@ -1,7 +1,7 @@
 {
-  "name": "changeinchrist",
+  "name": "SellStuff",
   "version": "0.5.0",
-  "description": "changeinchrist.org",
+  "description": "A website to get rich baby!",
   "main": "dist/index.html",
   "repository": {
     "url": "git+ssh://git@github.com/WebJamApps/SellStuff.git",

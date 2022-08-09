@@ -1,9 +1,0 @@
-PORT=9000
-NODE_ENV=development
-BackendUrl=''
-GoogleClientId=http://702173574211-lo764q6i5k1c5brj29g28ltrjcbvq2hn.apps.googleusercontent.com/
-userRoles={"roles": ["Rolename1", "Rolename2"]}
-AllowUrl={"urls": ["http://something.com", "https://something.com", "http://localhost:7000", "http://localhost:9000"]}
-HashString=
-TINY_KEY=nxtamqoio38j2qtzbpbhlcu7g2hqvzbzxd5yi7ds8wn2z98p
-HEADLESS=false
