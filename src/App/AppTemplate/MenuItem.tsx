@@ -16,14 +16,15 @@ interface IgoogleButtonsProps {
 function GoogleButtons(props: IgoogleButtonsProps): JSX.Element {
   const { type, index, auth, dispatch } = props;
   const login = useGoogleLogin({
-    onSuccess: (codeResponse: any) => authUtils.responseGoogleLogin(codeResponse, auth, dispatch),
+    onSuccess: codeResponse => authUtils.responseGoogleLogin(codeResponse, auth, dispatch),
+    onError: () => console.log('Google login failed'),
     flow: 'auth-code',
   });
   if (type === 'login') {
     return (
       <Tooltip key={index} title={'Login with your Google account'} >
         <div key={index} className="menu-item googleLogin">
-          <Button onClick={() => login}>
+          <Button onClick={login}>
             Login
           </Button>
         </div>
