@@ -26,24 +26,6 @@ export const NavLinks = ({ style, auth, setState, dispatch }: InavLinksProps) =>
   );
 };
 
-// interface IsidebarProps {
-//   style:string
-// }
-// export const Sidebar = ({ style }: IsidebarProps) => {
-//   return (
-//       <div className={`${style} sidebar__functions`}>
-//         {// TODO remove process.env check when feature is working
-//         /* istanbul ignore next */process.env.NODE_ENV !== 'production'
-//       ? this.makeForm('Search') : null
-//         }
-//         {// TODO remove process.env check when feature is working
-//         /* istanbul ignore next */process.env.NODE_ENV !== 'production'
-//       ? this.makeForm('Subscribe') : null
-//         }
-//       </div>
-//   );
-// };
-
 interface IdrawerHeaderProps {
   style:string, state:any, setState: (arg0:any)=>void
 }

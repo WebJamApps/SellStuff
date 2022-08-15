@@ -1,5 +1,4 @@
 import superagent from 'superagent';
-import { Dispatch } from 'react';
 import { GoogleBody } from '../AppTypes';
 
 export const gotToken = (doc: string): unknown => ({
@@ -12,7 +11,7 @@ export const authError = (e: Error): unknown => ({
   error: e,
 });
 
-export const logout = (dispatch: Dispatch<unknown>): void => dispatch({ type: 'LOGOUT' });
+// export const logout = (dispatch: Dispatch<unknown>): void => dispatch({ type: 'LOGOUT' });
 
 export async function authenticate(body: GoogleBody, auth:any, dispatch:(arg0:any)=>void): Promise<string | Error> {
   if (auth.isAuthenticated) return 'authenticated';

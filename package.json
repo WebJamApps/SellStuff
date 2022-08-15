@@ -1,7 +1,7 @@
 {
-  "name": "changeinchrist",
+  "name": "SellStuff",
   "version": "0.5.0",
-  "description": "changeinchrist.org",
+  "description": "A website to get rich baby!",
   "main": "dist/index.html",
   "repository": {
     "url": "git+ssh://git@github.com/WebJamApps/SellStuff.git",
@@ -42,6 +42,7 @@
     "@emotion/styled": "^11.8.1",
     "@mui/material": "^5.4.2",
     "@popperjs/core": "^2.9.2",
+    "@react-oauth/google": "^0.2.6",
     "@tinymce/tinymce-react": "^3.12.6",
     "@types/core-js": "^2.5.4",
     "@types/domutils": "^1.7.2",
@@ -83,7 +84,6 @@
     "prop-types": "latest",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "react-google-login": "latest",
     "react-moment": "^1.1.1",
     "react-redux": "latest",
     "react-router-dom": "^5.2.1",
