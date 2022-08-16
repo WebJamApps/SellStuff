@@ -13,7 +13,7 @@ export const authError = (e: Error): unknown => ({
 
 // export const logout = (dispatch: Dispatch<unknown>): void => dispatch({ type: 'LOGOUT' });
 
-export async function authenticate(body: GoogleBody, auth:any, dispatch:(arg0:any)=>void): Promise<string | Error> {
+export async function authenticate(body: GoogleBody, auth:any, dispatch:(arg0:any)=>void): Promise<string> {
   if (auth.isAuthenticated) return 'authenticated';
   let data;
   try {
@@ -28,6 +28,6 @@ export async function authenticate(body: GoogleBody, auth:any, dispatch:(arg0:an
     return 'authentication failed';
   }
   dispatch(gotToken(data.body));
-  return 'authenticated';
+  return data.body.token;
 }
 

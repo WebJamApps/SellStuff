@@ -65,11 +65,7 @@ export const DrawerContainer = (props:IdrawerContainerProps) => {
           <div className={`${style} sidebar`}>
             <div className="sidebar__content">
                 <DrawerHeader style={style} state={state} setState={setState}/>
-              {/* {this.drawerHeader(style)} */}
-              {/* <Sidebar style={style}/> */}
-              {/* {this.sidebar(style)} */}
               <NavLinks style={style} auth={auth} setState={setState} dispatch={dispatch}/>
-              {/* {this.navLinks(style)} */}
             </div>
           </div>
   );
