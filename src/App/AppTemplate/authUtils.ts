@@ -15,30 +15,25 @@ async function responseGoogleLogout(dispatch: Dispatch<unknown>): Promise<string
   return 'logout';
 }
 
-async function setUser(auth:any, dispatch:(arg0:any)=>void): Promise<string> {
+async function setUser(token:string, dispatch:(arg0:any)=>void): Promise<void> {
   const userRoles = commonUtils.getUserRoles();
   let decoded:any, user: superagent.Response;
   try {
-    decoded = jwt.verify(auth.token, process.env.HashString || /* istanbul ignore next */'');
-  } catch (e: any) { return `${e.message}`; }
-  if ((decoded && typeof decoded !== 'string') && (decoded.user && userRoles.indexOf(decoded.user.userType) !== -1)) {
-    dispatch({ type: 'SET_USER', data: decoded.user });
-  } else {
-    try {
-      user = await superagent.get(`${process.env.BackendUrl}/user/${decoded.sub}`)
-        .set('Accept', 'application/json').set('Authorization', `Bearer ${auth.token}`);
-      if (userRoles.indexOf(user.body.userType) === -1) {
-        return await responseGoogleLogout(dispatch);
-      } else dispatch({ type: 'SET_USER', data: user.body });
-    } catch (e: any) { return `${e.message}`; }
-  }
-  window.location.reload();
-  return 'user set';
+    decoded = jwt.verify(token, process.env.HashString || /* istanbul ignore next */'');
+    user = await superagent.get(`${process.env.BackendUrl}/user/${decoded.sub}`)
+      .set('Accept', 'application/json').set('Authorization', `Bearer ${token}`);
+    if (userRoles.indexOf(user.body.userType) === -1) {
+      // console.log(user);
+      await responseGoogleLogout(dispatch);
+    } else dispatch({ type: 'SET_USER', data: user.body });
+    window.location.reload();
+  } catch (e: any) { console.log(`${e.message}`); }
 }
+
 async function responseGoogleLogin(
   response: any,
   auth:any, dispatch:(arg0:any)=>void,
-): Promise<string> {
+): Promise<void> {
   const uri = window.location.href;
   const baseUri = uri.split('/')[2];
   const body: GoogleBody = {
@@ -50,10 +45,12 @@ async function responseGoogleLogin(
       return encodeURIComponent(rand);
     },
   };
-  try { await authenticate(body, auth, dispatch); } catch (e: any) {
-    return `${e.message}`;
+  try { 
+    const token = await authenticate(body, auth, dispatch); 
+    await setUser(token, dispatch);
+  } catch (e: any) {
+    console.log(`${e.message}`);
   }
-  return setUser(auth, dispatch);
 }
 
 function responseGoogleFailLogin(response: unknown): string {
