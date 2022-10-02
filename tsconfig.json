@@ -1,8 +1,8 @@
 {
     "compilerOptions": {
-      "paths": {
-        "*": ["types/*"]
-      },
+    "paths": {
+      "*": ["types/*"],"src/*":["src/*"],"test/*":["test/*"]
+    },
       "baseUrl": ".",
       "target": "ES2015",
       /* Specify ECMAScript target version: 'ES3' (default), 'ES5', 'ES2015', 'ES2016', 'ES2017', 'ES2018', 'ES2019', 'ES2020', or 'ESNEXT'. */
@@ -14,7 +14,7 @@
       /* Redirect output structure to the directory. */
       /* "allowJs": false, */
       /* Allow javascript files to be compiled. */
-      "jsx": "react",
+      "jsx": "react-jsx",
       /* Specify JSX code generation: 'preserve', 'react-native', or 'react'. */
       /*"checkJs": false,*/
       /* Report errors in .js files. */
@@ -86,5 +86,6 @@
       /* Advanced Options */
       "forceConsistentCasingInFileNames": true /* Disallow inconsistently-cased references to the same file. */
     },
-    "exclude": ["dist", "node_modules", "test", "webpack.config.js"]
+    "exclude": ["dist", "node_modules", "webpack.config.js"],
+    "include": ["src", "test"],
   }
