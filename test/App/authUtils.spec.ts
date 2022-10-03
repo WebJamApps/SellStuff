@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import jwt from 'jsonwebtoken';
 import superagent from 'superagent';
-import authUtils from '../../src/App/AppTemplate/authUtils';
-import commonUtils from '../../src/lib/commonUtils';
+import authUtils from 'src/App/AppTemplate/authUtils';
+import commonUtils from 'src/lib/commonUtils';
 
 describe('authUtils', () => {
   const vStub: any = {
