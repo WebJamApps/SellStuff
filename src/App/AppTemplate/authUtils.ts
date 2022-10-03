@@ -2,16 +2,15 @@ import superagent from 'superagent';
 import jwt from 'jsonwebtoken';
 import { Dispatch } from 'react';
 import { googleLogout } from '@react-oauth/google';
-import commonUtils from '../../lib/commonUtils';
+import commonUtils from 'src/lib/commonUtils';
 import { authenticate } from './authActions';
 import { GoogleBody } from '../AppTypes';
-import utils from '../../lib/commonUtils';
 
 async function responseGoogleLogout(dispatch: Dispatch<unknown>): Promise<string> {
   dispatch({ type: 'LOGOUT' });
   googleLogout();
-  await utils.delay(2);
-  window.location.assign('/'); 
+  await commonUtils.delay(2);
+  window.location.assign('/');
   return 'logout';
 }
 
@@ -32,7 +31,8 @@ async function setUser(token:string, dispatch:(arg0:any)=>void): Promise<void> {
 
 async function responseGoogleLogin(
   response: any,
-  auth:any, dispatch:(arg0:any)=>void,
+  auth:any,
+  dispatch:(arg0:any)=>void,
 ): Promise<void> {
   const uri = window.location.href;
   const baseUri = uri.split('/')[2];
@@ -45,8 +45,8 @@ async function responseGoogleLogin(
       return encodeURIComponent(rand);
     },
   };
-  try { 
-    const token = await authenticate(body, auth, dispatch); 
+  try {
+    const token = await authenticate(body, auth, dispatch);
     await setUser(token, dispatch);
   } catch (e: any) {
     console.log(`${e.message}`);

@@ -17,7 +17,7 @@ describe('HomepageUtils', () => {
   });
 
   it('putAPI returns an error message', async () => {
-    const res2:any = Promise.reject( new Error('Bad') );
+    const res2:any = Promise.reject(new Error('Bad'));
     const sSend2: any = ({ send: () => res2 });
     const putR2: any = () => ({
       set: () => ({ set: () => sSend2 }),
