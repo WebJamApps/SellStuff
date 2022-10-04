@@ -2,6 +2,7 @@ import superagent from 'superagent';
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { GoogleOAuthProvider } from '@react-oauth/google';
 import commonUtils from '../lib/commonUtils';
 import AdminDashboardDefault from '../containers/AdminDashboard';
 import AppFourOhFour from './404';
@@ -10,7 +11,6 @@ import DefaultHomepage from '../containers/Homepage';
 import mapStoreToProps from '../redux/mapStoreToProps';
 import fetch from '../lib/fetch';
 import { AppProps } from './AppTypes';
-import { GoogleOAuthProvider } from '@react-oauth/google';
 
 export class App extends Component<AppProps> {
   fetch: typeof fetch;

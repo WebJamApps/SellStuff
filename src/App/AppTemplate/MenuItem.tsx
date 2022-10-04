@@ -1,12 +1,11 @@
 import React from 'react';
+import { useGoogleLogin } from '@react-oauth/google';
+import { Tooltip, Button } from '@mui/material';
+import { Link } from 'react-router-dom';
 import { Auth } from '../../redux/mapStoreToProps';
 import commonUtils from '../../lib/commonUtils';
 import { ImenuDefinition } from './menuDefinition';
-import { useGoogleLogin } from '@react-oauth/google';
-import { Tooltip } from '@mui/material';
-import { Link } from 'react-router-dom';
 import authUtils from './authUtils';
-import { Button } from '@mui/material';
 
 interface IgoogleButtonsProps {
   type: string, index: string | number | undefined,
@@ -14,15 +13,17 @@ interface IgoogleButtonsProps {
 }
 
 function GoogleButtons(props: IgoogleButtonsProps): JSX.Element {
-  const { type, index, auth, dispatch } = props;
+  const {
+    type, index, auth, dispatch,
+  } = props;
   const login = useGoogleLogin({
-    onSuccess: codeResponse => authUtils.responseGoogleLogin(codeResponse, auth, dispatch),
+    onSuccess: (codeResponse) => authUtils.responseGoogleLogin(codeResponse, auth, dispatch),
     onError: () => console.log('Google login failed'),
     flow: 'auth-code',
   });
   if (type === 'login') {
     return (
-      <Tooltip key={index} title={'Login with your Google account'} >
+      <Tooltip key={index} title="Login with your Google account">
         <div key={index} className="menu-item googleLogin">
           <Button onClick={login}>
             Login
@@ -59,7 +60,8 @@ function MenuLink(props: any): JSX.Element {
 
 const continueMenuItem = (
   menu: ImenuDefinition,
-  index: number, auth: Auth,
+  index: number,
+  auth: Auth,
   setState: (arg0: any) => void,
   dispatch: (arg0: any) => void,
 ): JSX.Element | null => {
@@ -73,7 +75,9 @@ interface ImenuItemProps {
   menuItem: ImenuDefinition, index: number, auth: any, setState: (arg0: any) => void, dispatch: (arg0: any) => void
 }
 export function MenuItem(props: ImenuItemProps): JSX.Element | null {
-  const { menuItem, auth, index, setState, dispatch } = props;
+  const {
+    menuItem, auth, index, setState, dispatch,
+  } = props;
   const userRoles: string[] = commonUtils.getUserRoles();
   // const { auth } = view.props;
   if (menuItem.name === 'Home' && window.location.pathname === '/') return null;
