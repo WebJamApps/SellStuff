@@ -31,7 +31,6 @@ export class AppTemplate extends React.Component<AppMainProps, AppMainState> {
     const { children } = this.props;
     return (
       <div className={`${style2} container`}>
-        {/* {this.drawerContainer(style)} */}
         <DrawerContainer
           auth={this.props.auth}
           menuOpen={menuOpen}
