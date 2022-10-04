@@ -13,9 +13,9 @@ export const sortBlogs = (blogs?:Iblog[]) => {
   });
 };
 
-//TODO refactor to a Provider here instead of using Redux
+// TODO refactor to a Provider here instead of using Redux
 // eslint-disable-next-line @typescript-eslint/default-param-last
-const reducer = (state = initialState, action: { type: string; data: Iblog[]; }): { blogs:Iblog[] } => {  
+const reducer = (state = initialState, action: { type: string; data: Iblog[]; }): { blogs:Iblog[] } => {
   switch (action.type) {
     case 'GOT_BLOGS':
       return {

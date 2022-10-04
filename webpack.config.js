@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
 require('dotenv').config();
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -24,17 +23,18 @@ if (process.env.BackendUrl === 'http://localhost:7000') {
 }
 module.exports = (env) => ({
   resolve: {
+    alias: { src: srcDir, 'react-dom': '@hot-loader/react-dom' },
     extensions: ['.js', '.jsx', '.ts', '.tsx'],
     fallback: { // needed for jsonwebtoken
       crypto: require.resolve('crypto-browserify'),
       stream: require.resolve('stream-browserify'),
       util: require.resolve('util/'),
+      buffer: require.resolve('buffer/'),
     },
   },
 
   entry: {
     app: [`${srcDir}/index.tsx`],
-    vendor: ['jquery', 'bootstrap'],
   },
 
   mode: env.production ? 'production' : 'development',
@@ -112,10 +112,6 @@ module.exports = (env) => ({
 
   plugins: [
     new ProvidePlugin({
-      $: 'jquery',
-      jQuery: 'jquery',
-      'window.jQuery': 'jquery',
-      Popper: ['popper.js', 'default'],
       process: 'process/browser',
     }),
     new HtmlWebpackPlugin({

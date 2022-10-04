@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import jwt from 'jsonwebtoken';
-import superagent from 'superagent';
-import authUtils from '/Users/m0cah/Documents/WebJam/SellStuff/src/App/AppTemplate/authUtils';
-import commonUtils from '/Users/m0cah/Documents/WebJam/SellStuff/src/lib/commonUtils';
-import type { Dispatch } from 'react';
+// import jwt from 'jsonwebtoken';
+// import superagent from 'superagent';
+import authUtils from 'src/App/AppTemplate/authUtils';
+// import commonUtils from 'src/lib/commonUtils';
+// import type { Dispatch } from 'react';
 
 describe('authUtils', () => {
   const vStub: any = {

@@ -7,12 +7,12 @@ import Moment from 'react-moment';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import HtmlReactParser from 'html-react-parser';
+import { Tooltip } from '@mui/material';
 import CommonUtils from '../../lib/commonUtils';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 import BlogEditor from '../../components/BlogEditor';
 import DefaultFooter from '../../App/Footer';
 import utils from './HomepageUtils';
-import { Tooltip } from '@mui/material';
 
 export interface IBlog { created_at?: string; _id: string; title: string, body: string }
 
@@ -68,7 +68,7 @@ export class Homepage extends React.Component<HomepageProps, HomepageState> {
     const myId = params.get('id');
     if (myId) {
       const blog = document.getElementById(myId);
-      /*istanbul ignore else*/if (blog)blog.scrollIntoView();
+      /* istanbul ignore else */if (blog)blog.scrollIntoView();
     }
   }
 
@@ -97,13 +97,13 @@ export class Homepage extends React.Component<HomepageProps, HomepageState> {
   editBlogButton(blog: IBlog): JSX.Element {
     return (
       <Tooltip title={`Edit Blog ${blog._id}`} onOpen={() => this.makeEditBlogSection(blog)}>
-      <button
-        id={`editBlogButton${blog._id}`}
-        style={{ width: '50px' }}
-        type="button"
-      >
-        Edit
-      </button>
+        <button
+          id={`editBlogButton${blog._id}`}
+          style={{ width: '50px' }}
+          type="button"
+        >
+          Edit
+        </button>
       </Tooltip>
     );
   }
@@ -111,24 +111,24 @@ export class Homepage extends React.Component<HomepageProps, HomepageState> {
   deleteBlogButton(id: string): JSX.Element {
     return (
       <Tooltip title={`Delete Blog ${id}`}>
-      <button
-        id={`deleteBlogButton${id}`}
-        style={{ width: '50px' }}
-        type="button"
-        onClick={() => this.deleteBlog(id)}
-      >
-        Delete
-      </button>
+        <button
+          id={`deleteBlogButton${id}`}
+          style={{ width: '50px' }}
+          type="button"
+          onClick={() => this.deleteBlog(id)}
+        >
+          Delete
+        </button>
       </Tooltip>
     );
   }
 
   addBlogButton(): JSX.Element {
     return (
-      <Tooltip title='Add Blog'>
-      <button type="button" id="addBlogButton" onClick={() => this.setState({ referrer: '/admin#admin-top' })}>
-        <i className="fa fa-plus" />
-      </button>
+      <Tooltip title="Add Blog">
+        <button type="button" id="addBlogButton" onClick={() => this.setState({ referrer: '/admin#admin-top' })}>
+          <i className="fa fa-plus" />
+        </button>
       </Tooltip>
     );
   }
@@ -159,8 +159,11 @@ export class Homepage extends React.Component<HomepageProps, HomepageState> {
   }
 
   // eslint-disable-next-line class-methods-use-this
-  makeSocialMediaButton(TagName: typeof FacebookShareButton | typeof TwitterShareButton | typeof LinkedinShareButton,
-    TagIcon: typeof FacebookIcon | typeof TwitterIcon | typeof LinkedinIcon, id:string):JSX.Element {
+  makeSocialMediaButton(
+    TagName: typeof FacebookShareButton | typeof TwitterShareButton | typeof LinkedinShareButton,
+    TagIcon: typeof FacebookIcon | typeof TwitterIcon | typeof LinkedinIcon,
+    id:string,
+  ):JSX.Element {
     const URL = `https://www.changeinchrist.org/?id=${id}`;
     return (
       <TagName
@@ -175,14 +178,14 @@ export class Homepage extends React.Component<HomepageProps, HomepageState> {
   socialMedia(id: string): JSX.Element {
     return (
       <ul className="blog__social-media">
-        <Tooltip title = 'Share on Facebook'>
-        {this.makeSocialMediaButton(FacebookShareButton, FacebookIcon, id)}
+        <Tooltip title="Share on Facebook">
+          {this.makeSocialMediaButton(FacebookShareButton, FacebookIcon, id)}
         </Tooltip>
-        <Tooltip title = 'Share on Twitter'>
-        {this.makeSocialMediaButton(TwitterShareButton, TwitterIcon, id)}
+        <Tooltip title="Share on Twitter">
+          {this.makeSocialMediaButton(TwitterShareButton, TwitterIcon, id)}
         </Tooltip>
-        <Tooltip title = 'Share on LinkedIn'>
-        {this.makeSocialMediaButton(LinkedinShareButton, LinkedinIcon, id)}
+        <Tooltip title="Share on LinkedIn">
+          {this.makeSocialMediaButton(LinkedinShareButton, LinkedinIcon, id)}
         </Tooltip>
         {/* <li key={`url${id}`}>
             <a key={`urll${id}`} href={`/?id=${id}`} className="blog__social-media--link copylink" aria-label="Permanent link to blog posting">

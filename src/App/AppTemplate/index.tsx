@@ -25,15 +25,18 @@ export class AppTemplate extends React.Component<AppMainProps, AppMainState> {
   }
 
   render(): JSX.Element {
-    const { menuOpen, containerOpen } = this.state; 
+    const { menuOpen, containerOpen } = this.state;
     // const style = `${menuOpen ? 'open' : 'close'}`;
     const style2 = `${containerOpen ? 'open' : 'close'}`;
     const { children } = this.props;
     return (
       <div className={`${style2} container`}>
-        {/* {this.drawerContainer(style)} */}
-        <DrawerContainer 
-          auth={this.props.auth} menuOpen={menuOpen} state={this.state} setState={this.setState} dispatch={this.props.dispatch}
+        <DrawerContainer
+          auth={this.props.auth}
+          menuOpen={menuOpen}
+          state={this.state}
+          setState={this.setState}
+          dispatch={this.props.dispatch}
         />
         {children}
       </div>

@@ -1,3 +1,4 @@
+// eslint-disable-next-line node/no-extraneous-import
 import { shallow } from 'enzyme';
 import { App } from '../../src/App';
 import type { Auth } from '../../src/redux/mapStoreToProps';

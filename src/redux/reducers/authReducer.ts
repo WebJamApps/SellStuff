@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/default-param-last */
 const initialState = {
   isAuthenticated: false,
   error: '',
@@ -6,8 +7,10 @@ const initialState = {
   user: {},
 };
 // eslint-disable-next-line @typescript-eslint/default-param-last
-const reducer = (state = initialState,
-  action: { type: string; data?: { name?: string, email?: string; token?: string; }; error?: { message?: string; }; }): Record<string, unknown> => {
+const reducer = (
+  state = initialState,
+  action: { type: string; data?: { name?: string, email?: string; token?: string; }; error?: { message?: string; }; },
+): Record<string, unknown> => {
   switch (action.type) {
     case 'GOT_TOKEN':
       // eslint-disable-next-line no-param-reassign

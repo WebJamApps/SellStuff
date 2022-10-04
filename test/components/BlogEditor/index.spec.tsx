@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+// eslint-disable-next-line node/no-extraneous-import
 import { shallow, ShallowWrapper } from 'enzyme';
 import BlogEditor from '../../../src/components/BlogEditor';
 import type { IBlog } from '../../../src/containers/Homepage';

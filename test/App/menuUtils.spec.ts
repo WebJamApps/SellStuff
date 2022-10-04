@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { MenuItem } from '/Users/m0cah/Documents/WebJam/SellStuff/src/App/AppTemplate/MenuItem';
+import { MenuItem } from 'src/App/AppTemplate/MenuItem';
 
 describe('menuUtils', () => {
   let r: JSX.Element | null;
@@ -23,13 +23,13 @@ describe('menuUtils', () => {
   });
   it('Prevents access to Admin Dashboard when auth user userType is incorrect', () => {
     viewStub.props.auth = { isAuthenticated: true, token: '', user: { userType: 'booya' } };
-    r = r = MenuItem(viewStub.props);
+    r = MenuItem(viewStub.props);
     expect(r).toBe(null);
   });
   it('does not display the home page link when on the home page already', () => {
     window.location.pathname = '/';
     viewStub.props.auth = { isAuthenticated: false, token: '', user: { userType: 'booya' } };
-    r = r = MenuItem(viewStub.props);
+    r = MenuItem(viewStub.props);
     expect(r).toBe(null);
   });
 });

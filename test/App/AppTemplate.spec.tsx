@@ -1,21 +1,23 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { shallow } from 'enzyme';
-import { AppTemplate } from '../../src/App/AppTemplate';
-import authUtils from '../../src/App/AppTemplate/authUtils';
-import { MenuItem } from '../../src/App/AppTemplate/MenuItem';
+// eslint-disable-next-line node/no-extraneous-import
+// import { shallow } from 'enzyme';
+// import { AppTemplate } from '../../src/App/AppTemplate';
+// import authUtils from '../../src/App/AppTemplate/authUtils';
+// import { MenuItem } from '../../src/App/AppTemplate/MenuItem';
 
-const dFunc = () => { };
-const anyProp: any = {};
-const location: any = { pathname: '/' };
-function setup() {
-  const props = { children: '<div></div>' };
-  document.body.innerHTML = '<div class="page-content"></div>';
-  const wrapper = shallow<AppTemplate>(<AppTemplate match={anyProp} history={anyProp} dispatch={dFunc} location={location}><div /></AppTemplate>);
-  return { wrapper, props };
-}
+// const dFunc = () => { };
+// const anyProp: any = {};
+// const location: any = { pathname: '/' };
+
+// function setup() {
+//   const props = { children: '<div></div>' };
+//   document.body.innerHTML = '<div class="page-content"></div>';
+//   const wrapper = shallow<AppTemplate>(<AppTemplate match={anyProp} history={anyProp} dispatch={dFunc} location={location}><div /></AppTemplate>);
+//   return { wrapper, props };
+// }
 
 describe('AppTemplate', () => {
-  it('is true', ()=>{
+  it('is true', () => {
     expect(true).toBe(true);
   });
   // it('renders the component', () => {
@@ -31,14 +33,14 @@ describe('AppTemplate', () => {
   // it('handles response from google login', async () => {
   //   authUtils.responseGoogleLogin = jest.fn(() => Promise.resolve(''));
   //   const wrapper2 = shallow<AppTemplate>(
-  //<AppTemplate dispatch={dFunc} location={location} match={anyProp} history={anyProp}><div /></AppTemplate>);
+  // <AppTemplate dispatch={dFunc} location={location} match={anyProp} history={anyProp}><div /></AppTemplate>);
   //   const result = await wrapper2.instance().responseGoogleLogin({ code: '' });
   //   expect(result).toBe('');
   // });
   // it('handles response from google logout', () => {
   //   authUtils.responseGoogleLogout = jest.fn(() => '');
   //   const wrapper2 = shallow<AppTemplate>(
-  //<AppTemplate dispatch={dFunc} location={location} match={anyProp} history={anyProp}><div /></AppTemplate>);
+  // <AppTemplate dispatch={dFunc} location={location} match={anyProp} history={anyProp}><div /></AppTemplate>);
   //   const result = wrapper2.instance().responseGoogleLogout();
   //   expect(result).toBe('');
   // });
