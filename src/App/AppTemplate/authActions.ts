@@ -1,5 +1,5 @@
 import superagent from 'superagent';
-import { GoogleBody } from '../AppTypes';
+import type { GoogleBody } from '../AppTypes';
 
 export const gotToken = (doc: string): unknown => ({
   type: 'GOT_TOKEN',

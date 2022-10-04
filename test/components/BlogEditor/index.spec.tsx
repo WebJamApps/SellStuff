@@ -1,8 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React from 'react';
 import { shallow, ShallowWrapper } from 'enzyme';
 import BlogEditor from '../../../src/components/BlogEditor';
-import { IBlog } from '../../../src/containers/Homepage';
+import type { IBlog } from '../../../src/containers/Homepage';
 
 describe('Dashboard Container', () => {
   let wrapper:ShallowWrapper<any>, compStub: any, editBlog:IBlog;

@@ -1,10 +1,10 @@
 import superagent from 'superagent';
 import jwt from 'jsonwebtoken';
-import { Dispatch } from 'react';
+import type { Dispatch } from 'react';
 import { googleLogout } from '@react-oauth/google';
 import commonUtils from '../../lib/commonUtils';
 import { authenticate } from './authActions';
-import { GoogleBody } from '../AppTypes';
+import type { GoogleBody } from '../AppTypes';
 import utils from '../../lib/commonUtils';
 
 async function responseGoogleLogout(dispatch: Dispatch<unknown>): Promise<string> {

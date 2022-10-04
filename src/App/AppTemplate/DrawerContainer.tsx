@@ -1,4 +1,3 @@
-import React from 'react';
 import menuItems from './menuDefinition';
 import { MenuItem } from './MenuItem';
 

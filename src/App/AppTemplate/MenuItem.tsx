@@ -1,7 +1,6 @@
-import React from 'react';
-import { Auth } from '../../redux/mapStoreToProps';
+import type { Auth } from '../../redux/mapStoreToProps';
 import commonUtils from '../../lib/commonUtils';
-import { ImenuDefinition } from './menuDefinition';
+import type { ImenuDefinition } from './menuDefinition';
 import { useGoogleLogin } from '@react-oauth/google';
 import { Tooltip } from '@mui/material';
 import { Link } from 'react-router-dom';

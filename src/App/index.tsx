@@ -9,7 +9,7 @@ import AppTemplateDefault from './AppTemplate';
 import DefaultHomepage from '../containers/Homepage';
 import mapStoreToProps from '../redux/mapStoreToProps';
 import fetch from '../lib/fetch';
-import { AppProps } from './AppTypes';
+import type { AppProps } from './AppTypes';
 import { GoogleOAuthProvider } from '@react-oauth/google';
 
 export class App extends Component<AppProps> {
