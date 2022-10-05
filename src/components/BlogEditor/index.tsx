@@ -1,4 +1,3 @@
-import React from 'react';
 import type { IBlog, Homepage } from '../../containers/Homepage';
 import Forms from '../../lib/forms';
 import utils from './blogEditorUtils';

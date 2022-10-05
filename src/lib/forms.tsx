@@ -1,5 +1,3 @@
-import React from 'react';
-
 export interface InputParams {
   type: string | undefined,
   label: string, isRequired: boolean | undefined,

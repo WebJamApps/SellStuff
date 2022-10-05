@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import superagent from 'superagent';
-import { _ } from 'core-js';
-import { authenticate } from '../../src/App/AppTemplate/authActions';
-import type { Auth } from '../../src/redux/mapStoreToProps';
-import type { GoogleBody } from '../../src/App/AppTypes';
+// import superagent from 'superagent';
+// import { _ } from 'core-js';
+// import { authenticate } from '../../src/App/AppTemplate/authActions';
+// import type { Auth } from '../../src/redux/mapStoreToProps';
+// import type { GoogleBody } from '../../src/App/AppTypes';
 
 describe('authActions', () => {
   it('is true', () => {

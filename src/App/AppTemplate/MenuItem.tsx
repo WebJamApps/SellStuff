@@ -2,10 +2,10 @@ import React from 'react';
 import { useGoogleLogin } from '@react-oauth/google';
 import { Tooltip, Button } from '@mui/material';
 import { Link } from 'react-router-dom';
+import authUtils from 'src/App/AppTemplate/authUtils';
 import { Auth } from '../../redux/mapStoreToProps';
 import commonUtils from '../../lib/commonUtils';
 import { ImenuDefinition } from './menuDefinition';
-import authUtils from './authUtils';
 
 interface IgoogleButtonsProps {
   type: string, index: string | number | undefined,
