@@ -1,6 +1,6 @@
-# Change In Christ
+# Sell Stuff
 
-Kyle Knight's blog
+A platform to sell various things!
 
 [![CircleCI](https://circleci.com/gh/WebJamApps/SellStuff.svg?style=svg)](https://circleci.com/gh/WebJamApps/SellStuff)
 [![tested with jest](https://img.shields.io/badge/tested_with-jest-99424f.svg)](https://github.com/facebook/jest)
