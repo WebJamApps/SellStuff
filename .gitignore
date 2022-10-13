@@ -69,3 +69,6 @@ typings/
 
 .DS_Store
 .prettierrc
+
+#Hides the enc example
+.env.example
