@@ -5,7 +5,6 @@ import { googleLogout } from '@react-oauth/google';
 import commonUtils from 'src/lib/commonUtils';
 import { authenticate } from './authActions';
 import type { GoogleBody } from '../AppTypes';
-import utils from '../../lib/commonUtils';
 
 async function responseGoogleLogout(dispatch: Dispatch<unknown>): Promise<string> {
   dispatch({ type: 'LOGOUT' });

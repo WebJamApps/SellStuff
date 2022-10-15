@@ -9,8 +9,8 @@
   },
   "author": "https://github.com/orgs/WebJamApps/teams/handlersandkickers",
   "engines": {
-    "node": ">=16.17.1 <17",
-    "npm": ">=8.15.0 <9"
+    "node": ">=16.18.0 <17",
+    "npm": ">=8.19.2 <9"
   },
   "files": [
     "webpack.config.js",
@@ -101,6 +101,7 @@
     "superagent": "^8.0.2",
     "terser-webpack-plugin": "^5.3.6",
     "ts-loader": "^9.4.1",
+    "tsconfig": "^7.0.0",
     "typescript": "^4.8.4",
     "url-loader": "^4.1.1",
     "url-search-params-polyfill": "^8.1.1",
