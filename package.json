@@ -1,6 +1,6 @@
 {
   "name": "sell-stuff",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "A website to get rich baby!",
   "main": "dist/index.html",
   "repository": {
@@ -9,7 +9,7 @@
   },
   "author": "https://github.com/orgs/WebJamApps/teams/handlersandkickers",
   "engines": {
-    "node": ">=16.18.0 <17",
+    "node": ">=18.12.0 <19",
     "npm": ">=8.19.2 <9"
   },
   "files": [
@@ -38,8 +38,8 @@
     "postinstall": "npm run build:prod"
   },
   "dependencies": {
-    "@emotion/react": "^11.10.4",
-    "@emotion/styled": "^11.10.4",
+    "@emotion/react": "^11.10.5",
+    "@emotion/styled": "^11.10.5",
     "@hot-loader/react-dom": "^17.0.2",
     "@mui/icons-material": "^5.10.6",
     "@mui/material": "^5.10.7",
@@ -93,7 +93,7 @@
     "sass": "^1.55.0",
     "sass-loader": "^13.0.2",
     "slick-carousel": "^1.8.1",
-    "snyk": "^1.1019.0",
+    "snyk": "^1.1048.0",
     "source-map-loader": "^4.0.0",
     "stream-browserify": "^3.0.0",
     "style-loader": "^3.3.1",
