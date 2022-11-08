@@ -10,7 +10,7 @@ const items = [{
   classname: 'dashboard',
   type: 'link',
   iconClass: 'fas fa-user-secret',
-  link: 'admin',
+  link: '/admin',
   name: 'Admin',
   auth: true,
 },

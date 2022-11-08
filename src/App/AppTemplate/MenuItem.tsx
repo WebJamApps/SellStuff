@@ -74,6 +74,7 @@ const continueMenuItem = (
 interface ImenuItemProps {
   menuItem: ImenuDefinition, index: number, auth: any, setState: (arg0: any) => void, dispatch: (arg0: any) => void
 }
+
 export function MenuItem(props: ImenuItemProps): JSX.Element | null {
   const {
     menuItem, auth, index, setState, dispatch,
