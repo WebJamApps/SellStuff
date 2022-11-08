@@ -1,8 +1,16 @@
 {
   "extends": "./tsconfig.json",
-    "exclude": [
-      "node_modules",
-      "dist",
-      "webpack.config.js"
-    ]
+  "exclude": [
+    "node_modules",
+    "dist",
+  ],
+  "include": [
+    "src",
+    "test",
+    "tsconfig.json",
+    "tsconfig.eslint.json",
+    "package.json",
+    ".eslintrc.json",
+    "jest.config.json"
+  ]
 }
