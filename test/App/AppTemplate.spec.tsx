@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 // eslint-disable-next-line node/no-extraneous-import
-// import { shallow } from 'enzyme';
 // import { AppTemplate } from '../../src/App/AppTemplate';
 // import authUtils from '../../src/App/AppTemplate/authUtils';
 // import { MenuItem } from '../../src/App/AppTemplate/MenuItem';
